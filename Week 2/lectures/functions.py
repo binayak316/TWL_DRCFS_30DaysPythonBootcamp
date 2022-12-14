@@ -70,7 +70,7 @@ x = square(5)
 # The returned value will be stored in the variable "x".
 
 # We can then use the "x" variable to access the returned value
-# print(x)
+print(x)
 # This will print 25
 
 

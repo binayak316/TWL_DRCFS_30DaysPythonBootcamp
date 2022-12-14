@@ -12,7 +12,7 @@
 import random
 player = input("Enter the name: ")
 player_score = 0
-attempts = 0
+attempts = 1
 mylist = ['Rock', 'Paper','Scissors']
 # computer = random.choice(mylist)
 # print(computer)
