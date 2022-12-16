@@ -1,16 +1,19 @@
 from typing import Any
 
+FILE_PATH = 'Week 2/lectures/contact_management/contact.txt'
+
 def add_contact(name: str, email: str, phone: int) -> bool:
-    with open('contact.txt','a') as file:
+    with open(FILE_PATH,'a') as file:
         file.write(','.join((name,email,str(phone))))
         file.write('\n')
-        return 1
+        return 1 #1 is for true and 0 is false bool gareko
     return 0
 
 def find_contact(username: str) -> list:
-    with open('contact.txt','r') as file:
+    with open(FILE_PATH,'r') as file: #with is context manager with le error aa vane direct close gardinxa euta error handling ko way ho internally garxa jun kam chai
         contents = file.read()
         contents = [i.split(',') for i in contents.split('\n')][:-1]
+        # print(contents)
         res =[]
         for name,email,phone in contents:
             if name.lower() == username.lower():
@@ -26,6 +29,29 @@ def update_contact(old_details: tuple, new_details: tuple):
     Returns:
         do anything you want but make it functional.
     '''
+
+    print(new_details)
+    print(old_details)
+    # with open(FILE_PATH, 'r') as file:
+    #     contents = file.read()
+    #     contents = [i.split(',') for i in contents.split('\n')][:-1]
+    lines = open(FILE_PATH,'r').readlines()
+    for i, line in enumerate(lines):
+        print(old_details[0][0], line.split(',')[0])
+        # print(line)
+        if str(old_details[0][0]).lower().strip() == line.split(',')[0].lower().strip():
+            lines.remove(line)
+            lines.append(f"{new_details[0][0]}, {new_details[0][1]}, {new_details[0][2]}")
+    
+    with open(FILE_PATH, 'w') as file:
+        file.writelines(lines)
+    
+    
+
+
+
+
+
     # steps to follow:
     # 1. open file
     # 2. Search contact like we did in find contact
@@ -34,13 +60,14 @@ def update_contact(old_details: tuple, new_details: tuple):
     ####################################################
     # find line_num before hand.
     # lines = open(file_name, 'r').readlines()
-    # lines[line_num] = text
+    # lines[line_num] = text #yo line ma exact line thapauna paryo jasle tyo line change garna milos
     # out = open(file_name, 'w')
     # out.writelines(lines)
     # out.close()
     ###########################################################
     # 4. Remove the pass keyword once done
-    pass
+
+    # pass
 
 def delete_contact(name: str):
     # same as update contact but instead of editing the list in the particular index you just delete the given index.
@@ -48,13 +75,16 @@ def delete_contact(name: str):
 
 def import_contacts(filename) -> bool:
     try:
+        # we are reading the file provided by user
         file = open(filename,'r').readlines()
-        with open('contact.txt','a') as contacts:
+        with open(FILE_PATH,'a') as contacts:
             for items in file:
                 contact_details = items.split(',')
+                # TODO: ADD VALIDATION
                 contacts.write(','.join(contact_details))
             contacts.write('\n')
-            return 1
+            return 1 #python ma 1 vannu nai true ho bool ma 
+            
     except Exception as e:
         print('CANNOT OPEN GIVEN FILE')
         return 0
@@ -62,14 +92,14 @@ def import_contacts(filename) -> bool:
 def print_all():
     print('PRINTING ALL CONTACTS')
     try:
-        contacts = open('contact.txt','r').readlines()
+        contacts = open(FILE_PATH,'r').readlines()
         for i, contact in enumerate(contacts):
             contact = contact.split(',')
             print(f'Contact No. {i}')
             print(f'Name: {contact[0]}')
             print(f'Email: {contact[1]}')
             print(f'Phone: {contact[2]} \n')
-    except exception as e:
+    except Exception as e:
         print('No Contacts found.. INVALID FILE PATH. Please change the Relative path of the file in code to run it in windows properly')
 
 def check_int_type(inp: Any) -> int:
@@ -81,14 +111,14 @@ def check_int_type(inp: Any) -> int:
     '''
 
     try:
-        inp = int(inp)
+        inp = int(inp) #input lai int ma convert garera inp ma pass gareko ani return tehi input
         return inp
     except Exception as exception:
         print('\n'+'#'*100)
         print('Conversion Error. The following exception was thrown: ' + str(exception))
         print("Invalid option, please only enter integers and kindly omit other details. Restarting the program....")
         print('#'*100+'\n')
-        return 0
+        return 0 #0 means false return false 
 
 def main():
     '''
@@ -117,7 +147,7 @@ def main():
             name = input('Enter Contact Name: ')
             email = input('Enter Contact Email: ')
             phone = input('Enter Contact Phone Number (Do not enter 0): ')
-            phone = check_int_type(phone)
+            phone = check_int_type(phone) #this line checks or validates input to the int field
 
             if phone and len(str(phone)) == 10:
                 res = add_contact(name, email, phone)
@@ -131,6 +161,7 @@ def main():
         elif task == 2:
             name = input("Enter Name to Search: ")
             contacts = find_contact(name)
+            print(contacts)
             if len(contacts):
                 print('#'*100)
                 print('The following contacts were found in the contacts book with the provided name')
@@ -148,7 +179,20 @@ def main():
 
         elif task == 3:
             # complete this as homework
-            pass
+            # print("hy")
+            # print()
+            search = input("Enter your name to update: ")
+            old_details = find_contact(search)
+            print(old_details)
+            new_name = input(f"Enter new username for {search} : ")
+            new_email = input(f"Enter new email for {search} : ")
+            new_phone = input(f"Enter new phone for {search} : ")
+            new_details = [(new_name, new_email, new_phone)]
+
+            update_contact(old_details, new_details)
+           
+            
+            # passssss
         elif task == 4:
             # complete his as homework
             pass

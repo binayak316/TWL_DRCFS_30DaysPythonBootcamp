@@ -22,14 +22,14 @@
 
 
 
-# lllllllllllll  
+# with keyword for reading file 
 
 # open the file in read-only mode using the 'with'keyword
-# with open('/home/commando/PycharmProjects/python bootcamp/TWL_DRCFS_30DaysPythonBootcamp/Week 2/personal/newfile.txt','r')as file:
-# # with keyword use gareera text file ma lyaiyo as file garera and contents ma variable banara pathaiyo
-# # with keyword use garesi .close() garnu pardaina
-#     contents = file.read()
-#     print(contents)
+with open('/home/commando/PycharmProjects/python bootcamp/TWL_DRCFS_30DaysPythonBootcamp/Week 2/personal/newfile.txt','r')as file:
+# with keyword use gareera text file ma lyaiyo as file garera and contents ma variable banara pathaiyo which is in line below
+# with keyword use garesi .close() garnu pardaina
+    contents = file.read()
+    print(contents)
 
 
 
@@ -37,9 +37,9 @@
 
 
 # \\\\\\\\\\\\\\\\\\\\
-username_pwd = open('/home/commando/PycharmProjects/python bootcamp/TWL_DRCFS_30DaysPythonBootcamp/Week 2/personal/password.txt','r').read()
-username_pwd = username_pwd.split()
-print(username_pwd[0].split(',')[1])
+# username_pwd = open('/home/commando/PycharmProjects/python bootcamp/TWL_DRCFS_30DaysPythonBootcamp/Week 2/personal/password.txt','r').read()
+# username_pwd = username_pwd.split()
+# print(username_pwd[0].split(',')[1])
 
-for u_pwd in username_pwd:
-    print(u_pwd.split(',')[1])
+# for u_pwd in username_pwd:
+#     print(u_pwd.split(',')[1])
