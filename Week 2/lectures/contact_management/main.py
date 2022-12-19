@@ -32,9 +32,7 @@ def update_contact(old_details: tuple, new_details: tuple):
 
     print(new_details)
     print(old_details)
-    # with open(FILE_PATH, 'r') as file:
-    #     contents = file.read()
-    #     contents = [i.split(',') for i in contents.split('\n')][:-1]
+  
     lines = open(FILE_PATH,'r').readlines()
     for i, line in enumerate(lines):
         print(old_details[0][0], line.split(',')[0])
@@ -46,12 +44,6 @@ def update_contact(old_details: tuple, new_details: tuple):
     with open(FILE_PATH, 'w') as file:
         file.writelines(lines)
     
-    
-
-
-
-
-
     # steps to follow:
     # 1. open file
     # 2. Search contact like we did in find contact
@@ -71,7 +63,13 @@ def update_contact(old_details: tuple, new_details: tuple):
 
 def delete_contact(name: str):
     # same as update contact but instead of editing the list in the particular index you just delete the given index.
-    pass
+    print(name)
+    lines = open(FILE_PATH,'r').readlines()
+    for i, line in enumerate(lines):
+        print(line)
+        
+
+    # pass
 
 def import_contacts(filename) -> bool:
     try:
@@ -179,8 +177,7 @@ def main():
 
         elif task == 3:
             # complete this as homework
-            # print("hy")
-            # print()
+            
             search = input("Enter your name to update: ")
             old_details = find_contact(search)
             print(old_details)
@@ -195,7 +192,12 @@ def main():
             # passssss
         elif task == 4:
             # complete his as homework
-            pass
+            search = input("Enter your name to delete: ")
+            name = find_contact(search)
+            print(name)
+            delete_contact(name)
+           
+            # pass
         elif task == 5:
             file_path = input("Enter File Path Here (Hint: paste precontact.txt file path): ")
             if import_contacts(file_path):

@@ -2,7 +2,7 @@
 import random 
 random_number = (random.randint(1, 10))
 # user_guess = int(input('Enter your guess here:'))
-print(f"random number is {random_number}")
+# print(f"random number is {random_number}")
 initial_guess = 0
 while initial_guess < 3:
     user_guess = int(input('Enter your guess here:'))
