@@ -30,9 +30,11 @@ def main(): #this call send requests
     website = "https://www.hamropatro.com/"
     html_str: str = send_request(website) #:str gareko type hinted ho
     parsed_html = parse_html_string(html_str)
+    # print(parsed_html)
     current_date = fetch_current_temperature(parsed_html)
     print(f"The current date is {current_date}.")
 
 
 if __name__ == '__main__':
     main()
+
