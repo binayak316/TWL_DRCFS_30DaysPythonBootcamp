@@ -23,4 +23,6 @@ authors_list.append(author_div)
 with open("ekantipur.txt",mode = 'w') as file:
     for news in heading_texts:
         for auth in authors_list:
+            # auth.remove("कान्तिपुर संवाददाता")
+            # del auth[0:1]
             file.write(f"Headlines News {news}:- \n by authors: {auth} \n \n")
