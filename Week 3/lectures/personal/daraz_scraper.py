@@ -10,6 +10,7 @@
 import bs4
 import requests
 from datetime import datetime
+import time
 
 
 def request_site(url:str)->str:
@@ -24,6 +25,8 @@ def get_price_from_soup(soup:bs4.BeautifulSoup)->str:
     return nepali_price
 
 def write_price_to_file(price:str,filename:str)->None:
+    current_time = datetime.now()
+    time_str = current_time.strftime("%m/%d/%Y, %H:%M:%S")
     with open(filename,mode='a',encoding='utf-8') as file:
         file.write(price)
         file.write('\n')
@@ -39,3 +42,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+    # while True:
+    #     main()
+    #     time.sleep(3)

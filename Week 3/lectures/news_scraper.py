@@ -11,6 +11,7 @@ If you have any questions about what is and is not allowed, please reach out to 
 '''
 
 # A scraper to scrape news from nepali news site
+# find_all garda list painxa hamile
 
 
 
@@ -27,10 +28,13 @@ def news_scraper(url:str) -> list:
     soup = BeautifulSoup(page.content, 'html.parser')
     articles=soup.find_all('h3')
 
+
     # you can see the nested try exeption form below
     for article_title in articles:
         try:
-            news.append(article_title.find_all('a')[0].text)
+            news.append(article_title.find_all('a')[0].text) #this is a tag ko 0th elementnt ko text append vako
+            news.append(article_title.find_all('a', href=True)[0]['href'])#get('href')
+            # print(link)
         except Exception:   
             try:
                 news.append(article_title.find_all('span')[0].text)
@@ -53,7 +57,7 @@ def news_artilces_saver(filename:str):
     file_creator(filename)
     for title in articles:
         print(title)
-        file=open(filename,'a')
+        file=open(filename,'a', encoding="utf-8")
         file.write(f"{sn}  {title}")
         file.write("\n")
         file.close()
