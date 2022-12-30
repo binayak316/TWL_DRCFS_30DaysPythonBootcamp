@@ -15,3 +15,4 @@ for r in rasifal:
 with open("hamropatro.txt",mode='w')as file:
     for rasi in rasi_list:
         file.write(f"{rasi}")
+    # file.write(f"{rasi_list}")

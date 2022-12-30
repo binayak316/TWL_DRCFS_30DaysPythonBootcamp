@@ -1,0 +1,19 @@
+This is the documentation of the hamro_patro_rasifal_scrape.py file 
+
+
+The flow of the program:
+
+1. first of all import the requests and BeautifulSoup module because this file makes a requests and get response back
+2. make a variable called response which will store the response from that url
+3. page is a variable in which response will be stored in text format
+4. and soup is the variable after the parsing (html.parse)
+5. Now find the division in that webpage of class "desc" by using find_all() builtin functions
+6. and store that soup to the rasifal variable
+7. make a empty list which is rasi_list )
+8. if we use find_all() method for finding the division of name "desc" then we can't use getText() we have use getText() in for loop so
+9. make a forloop for rasifal variable to get text of that division
+10. append that text to that empty list which is rasi_list(declared at the top)
+11. after that work with the text file 
+12. open the hamropatro.txt file with write mode(open() method automatically creates the txt file  and writes)
+13. make a forloop and write the rasifal as a text
+
